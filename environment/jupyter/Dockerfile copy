@@ -1,0 +1,31 @@
+# Use an official Python base image
+FROM python:3.10
+
+# Set working directory
+WORKDIR /workspace
+
+# Upgrade pip
+RUN pip install --upgrade pip
+
+# Install TensorFlow and Keras
+RUN pip install tensorflow==2.12.0 keras==2.12.0
+
+# Install Torch and TorchData
+RUN pip install --no-deps torch==1.13.1 torchdata==0.6.0 --quiet
+
+# Install other required packages
+RUN pip install -U \
+    datasets==2.17.0 \
+    transformers==4.37.0 \
+    evaluate==0.4.0 \
+    rouge_score==0.1.2 \
+    peft==0.3.0 --quiet
+
+# Install Jupyter Notebook
+RUN pip install notebook
+
+# Expose Jupyter notebook port
+EXPOSE 8888
+
+# Run Jupyter Notebook
+CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root"]
