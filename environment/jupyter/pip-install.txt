@@ -1,0 +1,19 @@
+# Upgrade pip
+pip install --upgrade pip
+
+# TensorFlow and Keras (standalone)
+pip install tensorflow==2.16.1 keras==3.2.1
+
+# Compatible PyTorch version for Python 3.12
+pip install torch==2.2.2 torchdata==0.7.1
+
+# Compatible versions of Transformers stack
+pip install \
+    datasets==2.19.1 \
+    transformers==4.41.2 \
+    evaluate==0.4.1 \
+    rouge_score==0.1.2 \
+    peft==0.10.0
+
+# TRL (latest master or a recent stable commit)
+pip install git+https://github.com/huggingface/trl.git@dff1727  # Example stable commit
